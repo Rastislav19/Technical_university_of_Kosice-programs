@@ -1,0 +1,228 @@
+<!DOCTYPE HTML>
+<html lang="sk" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="author" content="Stefan Korecko" />
+  <link rel="stylesheet" href="normalize.css" />
+  <link rel="stylesheet"
+        href="treesBlog.css"
+        media="screen"/>
+  <link rel="stylesheet" href="screenStyle.css">
+  <link rel="stylesheet" href="/public/printStyle.css" type="text/css" media="print">
+  <title>formular</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+  <body>
+    <div>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-0 mt-0">
+      <div class="container bg-dark">
+
+        <a class="navbar-brand text-light" href="index.html"><i class="bi bi-basket"></i>Hlavná stranka</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link text-light" aria-current="page" href="article1.html">Cestovanie</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-light" href="article2.html">Turizmus</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link text-light" href="article3.html">Zájazdy</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link text-light" href="kontakt.html">Formular</a>
+            </li>
+
+          </ul>
+          <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-light" type="submit">Search</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+
+
+  </div>
+
+<body>
+<div class="mx-auto" id="formular">
+
+
+  <header class="text-center">
+      <h1 class="text-center">Formular-Cestovanie</h1>
+
+
+      <div class="menu mx-auto d-inline-block">
+          <button id="menuTitle">Menu</button>
+
+          <nav id="menuIts" class="menu mnHide">
+              <a href="#welcome">Welcome!</a>
+              <a href="#articles/1/74">Articles</a>
+              <a href="#opinions">Visitor opinions</a>
+              <a href="#addOpinion">Add your opinion</a>
+          </nav>
+
+      </div>
+
+  </header>
+
+<main id="router-view">
+</main>
+
+<footer>
+    <p>Copyright &copy; <script>document.write(new Date().getFullYear());</script>, AWT </p>
+</footer>
+
+
+<!--Templates for html, dynamically inserted by the router -->
+
+<script id="template-welcome" type="text/template">
+    <article>
+        <h2>Prečo nás cestovanie robí šťastnými?</h2>
+        <p>
+            Ľudia cestujú z viacerých dôvodov. Jednak túžia po tom, čo doma nemajú. V našom prípade túžime väčšinou po mori. Ďalší cestujú preto, aby si upevnili zdravie a iní preto, aby sa stali múdrejšími.
+             Túžia spoznávať históriu iných krajín.  Možno ste si aj vy 1. januára povedali, že v tomto roku budete viac cestovať. A urobili ste správne. Vedci dokázali, že práve  cestovanie z nás môže
+             urobiť oveľa šťastnejších ľudí.
+
+        </p>
+    </article>
+</script>
+<script id="articles" type="text/template"> <!-- ezt a template hasznalja a mustache script a tarlaom le generalasara -->
+    {{#articles}}
+    <article>
+        <h2>{{title}}</h2>
+        <p>
+            by {{author}}
+        </p>
+    </article>
+    {{/articles}}
+    <p>
+        Stranka {{currPage}} zo {{pageCount}} stranok.
+    </p>
+    <nav>
+        {{#prevPage}}
+        <a href="#articles/{{prevPage}}/{{pageCount}}"><< Predošla stránka</a>
+        {{/prevPage}}
+        {{#nextPage}}
+        <a href="#articles/{{nextPage}}/{{pageCount}}">dalšia stránka>></a>
+        {{/nextPage}}
+    </nav>
+    <footer  class="menuLink"><a href="#menuTitle">Back to the menu</a></footer>
+
+</script>
+
+<script id="template-articles-error" type="text/template">
+
+    <article>
+        <h2>Articles acquisition failed</h2>
+        <p>
+            {{errMessage}}
+        </p>
+    </article>
+    <footer  class="menuLink"><a href="#menuTitle">Back to the menu</a></footer>
+
+</script>
+
+<script id="template-opinions" type="text/template"> <!-- ezt a templatek hasznalja a mustache script a tarlaom le generalasara -->
+    <article  id="artOpinions">
+        <h2>Your opinions</h2>
+        {{#.}}
+        <section>
+            <h3>{{name}}</h3>
+            <p>{{opinion}}</p>
+            <p>{{key}}</p>
+            <p>{{mail}}</p>
+            <p>{{URL}}</p>
+        </section>
+        {{/.}}
+        {{^.}}
+        <section>
+            Sorry, no opinions found.
+        </section>
+        {{/.}}
+        <footer  class="menuLink"><a href="#menuTitle">Back to the menu</a></footer>
+    </article>
+</script>
+
+<script id="template-addOpinion" type="text/template">
+    <article  id="artOpnFrm">
+        <h2>Your Opinion</h2>
+        <p>
+            Please, use the form below to state your opinion about this page.
+        </p>
+        <form id="opnFrm">
+            <label for="name">Meno:</label>
+        <input type="text" name="username" id="name" size="25" maxlength="50" placeholder="name" required />
+        <br><br>
+        <label for="e-mail">E-mail:</label>
+        <input type="email" name="mail" id="e-mail" size="25" maxlength="50" placeholder="E-mail" required />
+        <br><br>
+        <label for="URL">Url:</label>
+        <input type="url" name="url" id="URL" size="25" maxlength="50" placeholder="URL tvojho obrázka" />
+        <br><br>
+        <p>
+            Kolko bodov ziskam na stranke?
+        </p>
+
+        <input type="radio" id="plny" name="hodnotenie" value="plny">
+        <label for="plny">plny pocet</label><br>
+        <input type="radio" id="asipäť" name="hodnotenie" value="asipäť">
+        <label for="asipäť">5</label><br>
+        <input type="radio" id="nievela" name="hodnotenie" value="nievela">
+        <label for="nievela">2</label>
+
+        <br/>
+        <br/>
+
+        <input type="checkbox" id="new" value="new" name="new">
+        <label for="new"> dostal som plny pocet bodov</label><br>
+
+
+        <br/>
+        <br/>
+
+        <label for="opinion">Svoj názor:</label>
+        <textarea id="opinion" name="opinion" rows="8" cols="40" required></textarea>
+
+        <br/>
+        <br/>
+
+        <label>
+            Kľúč: <br />
+            <input type="text" id="key" list="words">
+            <datalist id="words">
+                <option value="Praha">
+                <option value="Bratislava">
+                <option value="Milano">
+                <option value="Cyprus">
+                <option value="Pariz">
+                <option value="Budapest">
+                <option value="Vieden">
+            </datalist>
+        </label>
+        <br/>
+        <br/>
+
+        <input type="submit">
+        <input type="reset">
+        </form>
+        <footer  class="menuLink"><a href="#menuTitle">Back to the menu</a></footer>
+    </article>
+</script>
+
+
+
+<!--JavaScript code, inserted as a module-->
+<script  type="module" src="index.js"></script>
+
+
+
+</div>
+</body>
+</html>

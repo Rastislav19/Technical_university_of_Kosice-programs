@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="utf-8">
+    <title>Zvieratkári</title>
+    <link rel="stylesheet"
+          type="text/css"
+          href="screenStyle.css">
+    <link rel="stylesheet"
+          type="text/css"
+          href="public/css/printStyle.css">
+</head>
+<body>
+    <header>
+        <p>
+            <svg width="100" height="100">
+                <circle cx="50" cy="50" r="40" stroke="green" stroke-width="4" fill="yellow"/>
+                <circle cx="50" cy="50" r="20" fill="red"/>
+                <circle cx="50" cy="50" r="10" fill="black"/>
+            </svg>
+        </p>
+        <h1>Zvieratkári</h1>
+    </header>
+    <nav>
+        <a href="#welcome">Úvodná stránka </a>-
+        <a href="#articles/1/10"> Články </a>-
+        <a href="#opinions"> Názory návštevníkov </a>-
+        <a href="#addOpinion"> Napíš svoj názor </a>
+    </nav>
+    <br>
+        <main id="router-view">
+        </main>
+    <br>
+    <footer>
+        <p>
+            <b>kontakt:</b>
+            <br><a href="mailto:rastislav.durica@student.tuke.sk">Rastisla Ďurica-mail</a>
+        </p>
+    </footer>
+    <br>
+
+    <script type="module" src="js/index.js"></script>
+    <!--include mustache javascript-->
+    <script  src="js/mustache,min.js"></script>
+
+    <script id="template-welcome" type="text/template">
+        <br>
+        <article>
+            <p>
+            <b>Blog <br><i>OD</i> zvieratkároch 🧔 <br><i>PRE</i> zvieratkároch 🧔 <br>a <i>O</i> zvieratkách 🐴</b>
+            </p>
+        </article>
+        <br>
+    </script>
+
+    <script id="template-articles" type="text/template" >
+        {{#articles}}
+        <article>
+            <h2>{{title}}</h2>
+            <p>
+                by {{author}}
+            </p>
+        </article>
+        {{/articles}}
+        <!--<p>
+        Displaying page {{currPage}} of {{pageCount}} pages.
+        </p>
+        <nav>
+            {{#prevPage}}
+            <a href="#articles/{{prevPage}}/{{pageCount}}"><< Previous page</a>
+            {{/prevPage}}
+            {{#nextPage}}
+            <a href="#articles/{{nextPage}}/{{pageCount}}">Next page >></a>
+            {{/nextPage}}
+        </nav>
+    </script>
+
+    <script id="template-articles-error" type="text/template">
+
+        <article>
+            <h2>Articles acquisition failed</h2>
+            <p>
+                {{errMessage}}
+            </p>
+        </article>
+        <!--<p>
+            Displaying page {{currPage}} of {{pageCount}} pages.
+        </p>
+        <nav>
+            {{#prevPage}}
+            <a href="#articles/{{prevPage}}/{{pageCount}}"><< Previous page</a>
+            {{/prevPage}}
+            {{#nextPage}}
+            <a href="#articles/{{nextPage}}/{{pageCount}}">Next page >></a>
+            {{/nextPage}}
+        </nav>
+    </script>
+    <script id="template-opinions" type="text/template">
+        <h2>Visitor Opinions</h2>
+            {{#.}}
+            <section>
+                <h3>{{name}} <i>{{createdDate}}</i></h3>
+                <p>{{email}}</p>
+                <p>{{image}}</p>
+                <b>MAČKA/PES:</b><p>{{preference1}}</p>
+                <b>ŠKREČOK/MYŠ:</b><p>{{preference2}}</p>
+                <b>KOMENTÁR:</b><p>{{opinion}}</p>
+                <b>KĽÚČOVÉ SLOVO:</b><p>{{keywords}}</p>
+                --------------------------------------------------------------
+            </section>
+            {{/.}}
+            {{^.}}
+            <section>
+                Sorry, no opinions found.
+            </section>
+            {{/.}}
+    </script>
+    <script id="template-addOpinion" type="text/template">
+        <h2>Formulár:</h2>
+            <form id="opnFrm">
+                <fieldset>
+                    <label for="name" class="bio"><b>Meno:</b></label>
+                    <input type="text" name="Name" id="name" size="20" maxLength="50" placeholder="Píš svoje celé meno sem." required>
+
+                    <br><label class="bio" for="email"><b>E-mail:</b></label>
+                    <input type="email" id="email" size="20" maxLength="50" placeholder="Píš email sem." required>
+
+                    <br><label for="image" class="bio"><b>Obrázok:</b></label>
+                    <input type="url" id="image" placeholder="Vlož URL adresu obrázku sem.">
+
+                    <br><label><b>Čo preferuješ?</b></label>
+                    <input type="radio" id="cat" name="fav_animal" value="mačka">
+                    <label for="cat">mačka</label>
+                    <input type="radio" id="dog" name="fav_animal" value="pes">
+                    <label for="dog">pes</label>
+
+                    <br><label><b>Čo preferuješ?</b></label>
+                    <input type="radio" id="hamster" name="fav_animal2" value="škrečok">
+                    <label for="hamster">škrečok</label>
+                    <input type="radio" id="mouse" name="fav_animal2" value="myš">
+                    <label for="mouse">myš</label>
+
+                    <br><label><b>Si človek?</b></label>
+                    <input type="checkbox" id="yes">
+                    <label for="yes">Áno</label>
+                    <input type="checkbox" id="yes2">
+                    <label for="yes2">som</label>
+
+                    <br>
+                    <br><label for="opinion"><b>Čo si myslíš o tejto stránke?</b></label>
+                    <br><textarea id="opinion" rows="3" cols="30" maxLength="300" placeholder="Píš sem." required></textarea>
+
+                    <br>
+                    <label for="keyWords"><b>Kľúčové slová:</b></label>
+                    <br>
+                    <input type="text" list="words" name="keyWords" id="keyWords" size="20" maxLength="50" placeholder="Píš kľúčové slová sem.">
+                    <datalist id="words">
+                        <option value="pes">
+                        <option value="mačka">
+                        <option value="zvieratká">
+                        <option value="králik">
+                    </datalist>
+
+                    <br>
+                    <br>
+                    <button type="submit">Poslať</button>
+                    <input type="reset">
+                </fieldset>
+            </form>
+            <!--<form id="opnFrm">
+                <label for="nameElm">Your name:</label>
+                <input type="text" name="login" id="nameElm" size="20" maxlength="50"
+                       placeholder="Enter your name here" required />
+                <br><br>
+                <label for="opnElm">Your opinion:</label>
+                <textarea name="comment" id="opnElm" cols="50" rows="3"
+                          placeholder="Express your opinion here" required></textarea>
+                <br><br>
+                <input type="checkbox" id="willReturnElm" />
+                <label for="willReturnElm">I will definitely return to this page.</label>
+                <br><br>
+                <button type="submit">Send</button>
+            </form>
+            <footer  class="menuLink"><a href="#menuTitle">Back to the menu</a></footer>-->
+    </script>
+
+</body>
+</html>

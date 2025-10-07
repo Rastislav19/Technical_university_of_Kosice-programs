@@ -1,0 +1,55 @@
+body {
+    background-color: lightblue;
+}
+
+h1 {
+    text-align: center;
+    color: navy;
+    background-color: lightblue;
+    font-size: xxx-large;
+    margin-top: 0.1%;
+    margin-bottom: 1%;
+}
+
+h2, h3{
+    text-align: center;
+    margin-bottom: 0.1%;
+    margin-top: 1.5%;
+}
+
+p{
+    text-align: center;
+    font-family: Arial, serif;
+    font-size: 110%;
+    font-style: normal;
+    margin-bottom: auto;
+    margin-top: auto;
+    margin-right: 20%;
+    margin-left: 20%;
+}
+
+table, th, td {
+    text-align: center;
+    border: 1px solid;
+}
+
+ul{
+    list-style-type: circle;
+    display: inline-block;
+    text-align: left;
+    margin-bottom: 1%;
+}
+
+ol{
+    list-style-type: -moz-ethiopic-numeric;
+    display: inline-block;
+    text-align: left;
+}
+
+.container {
+    text-align: center;
+}
+.center{
+    margin-left: auto;
+    margin-right: auto;
+}

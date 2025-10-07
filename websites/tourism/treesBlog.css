@@ -1,0 +1,242 @@
+/*
+Web Technologies course
+CSS for examples of the "My Favourite Trees" blog with JavaScript
+
+Stefan Korecko, 2020
+DCI FEEI TU Kosice
+*/
+
+/*Basic formatting for the whole page*/
+
+html {
+    font-size: 100%;
+    font-family: "Tw Cen MT", Arial, Helvetica, sans-serif;
+    font-style: normal; /*normal, italic, oblique (obl.-similar to italic*/
+    font-weight: normal; /*normal, bold*/
+    text-align: justify; /*justify, left, right, center*/
+    color: black;
+}
+
+a:link, a:visited{
+    text-decoration: none;
+    color:black;
+}
+
+a:hover{
+    text-decoration: underline;
+    color: red;
+}
+
+body > * {
+    margin: 0.5rem;
+}
+
+#formular{
+  min-width: 75rem;
+  max-width: 75rem;
+}
+
+body > header{
+    border-radius: 1rem;
+    padding:0.5rem;
+    text-align:center;
+    background-color:lightgray;
+}
+
+
+body > footer{
+    font-size: 0.8rem;
+}
+
+main footer{
+    margin-top: 0.5em;
+}
+
+main > article{
+    background-color:lightgray;
+    border-radius: 1rem;
+    padding: 0.3rem;
+    margin-bottom: 1rem;
+}
+
+main > article > *{
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+main > article > h2{
+    background-color: #e49e1a;
+    border-radius: 1rem;
+    margin: 0;
+}
+
+body > aside{
+    background-color: rgb(253, 255, 162);
+    border-radius: 1rem;
+    color: grey;
+    font-size: 0.9em;
+    height: 8em;
+    padding: 0.5em;
+}
+
+/***********************************************************************************************************/
+/*FLEXBOX LAYOUT and media queries for the whole page*/
+body{
+    display: flex;
+    flex-direction: column;
+}
+li{
+    flex-grow: 1; /*aby zabrali celu sirku (to use the whole width)*/
+}
+body > footer{
+    order: 1; /*aby bol posledny. Ostatne maju implicitne hodnotu 0, tzn. sa zobrazia podla poradia v html (To be the last one displayed as the others have implicitly order=0)*/
+}
+
+
+
+@media only screen and (min-width: 600px){
+    body{
+        min-width: 35rem;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+
+@media only screen and (max-width: 599px){
+    body{
+        width: 100%;
+    }
+}
+
+
+
+
+/***********************************************************************************************************/
+/*Properties related to the dropdown menu*/
+
+.menu {
+    text-align: left;
+    padding-left: 0.5em;
+}
+
+#menuIts{
+    position:absolute;
+    padding: 0.5em;
+    max-width: 8em;
+    min-width: 7em;
+    border-radius: 0.5rem;
+    background-color: rgb(136, 131, 115);
+}
+
+#menuIts > a {
+    display: block;
+}
+
+#menuTitle{
+    border: 0;
+    background-color:lightgray;
+    outline:none;
+}
+
+#menuTitle:hover, #menuIts > a:hover{
+    text-decoration: none;
+    color: #982d3b;
+    background-color: rgb(255,246,214);
+}
+
+.mnHide {display:none;}
+
+.mnShow {display:block;}
+
+
+
+/***********************************************************************************************************/
+/*Properties related to the form and rendered opinions*/
+
+label{
+    vertical-align: top;
+    display: inline-block; /*instead of inline (default) to make the width applicable*/
+    min-width: 5.5em;
+}
+
+form{
+    padding-bottom: 1em;
+}
+
+h3 > i {
+    font-size: 0.8em;
+}
+
+.container {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 60px;
+    padding-top: 20px;
+    width: 48%;
+    float: left;
+}
+
+input[type=text], input[type=url], input[type=email], select, textarea {
+    width: 95%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+}
+
+label {
+    padding: 12px 12px 12px 0;
+    display: inline-block;
+}
+
+input[type=submit] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
+    margin-left: 20px;
+}
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+
+input[type=reset] {
+    background-color: #ff7b25;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
+    margin-left: 20px;
+}
+
+input[type=reset]:hover {
+    background-color: #FF5225;
+}
+
+
+
+.buttonContainer {
+    float: left;
+    padding-top: 10px;
+}
+
+
+.required:after { content:" *"; color: #e32;}
+
+#comment{
+    float: right;
+    width: 48%;
+}
+
+input:invalid, textarea:invalid{
+    border-color: #e32;
+    border-radius: 4px;
+
+}

@@ -1,0 +1,112 @@
+@media not all and (min-width: 600px) and (max-resolution: 1.8dppx) {
+    body {
+        min-width: 16rem;
+        margin: auto;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        box-sizing: border-box;
+        outline-width: 1em;
+        border-width: 1em;
+
+        /*display: grid;*/
+        /*grid-template-columns: auto 1fr auto;*/
+        /*grid-template-rows: auto 1fr auto;*/
+
+        display: -ms-grid;
+        -ms-grid-columns: auto 1fr auto;
+        -ms-grid-rows: auto 1fr auto;
+    }
+}
+@media not all and (min-width: 600px) and (max-resolution: 1.8dppx) {
+    body {
+        min-width: 35rem;
+        max-width: 60rem;
+        margin: auto;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        box-sizing: border-box;
+        outline-width: 1em;
+        border-width: 1em;
+
+        /*display: grid;*/
+        /*grid-template-columns: auto 1fr auto;*/
+        /*grid-template-rows: auto 1fr auto;*/
+
+        display: -ms-grid;
+        -ms-grid-columns: auto 1fr auto;
+        -ms-grid-rows: auto 1fr auto;
+    }
+}
+body {
+    background-color: lightblue;
+}
+
+h1:hover{
+    color: red;
+    transition-duration: 1s;
+}
+
+img:hover{
+    transform: rotate(180deg);
+    transition-duration: 1s;
+}
+
+a:hover{
+    color: gold;
+    transition-duration: 1s;
+}
+
+h1 {
+    text-align: center;
+    color: navy;
+    background-color: lightblue;
+    font-size: 250%;
+    margin-top: 0.1%;
+    margin-bottom: 1%;
+}
+
+h2, h3{
+    text-align: center;
+    margin-bottom: 0.1%;
+    margin-top: 1.5%;
+}
+
+p{
+    text-align: center;
+    font-family: Arial, serif;
+    font-size: 110%;
+    font-style: normal;
+    margin-bottom: auto;
+    margin-top: auto;
+    margin-right: 20%;
+    margin-left: 20%;
+}
+
+table, th, td {
+    text-align: center;
+    border-collapse: collapse;
+    border: 0.1em solid;
+}
+
+ul{
+    list-style-type: circle;
+    display: inline-block;
+    text-align: left;
+    margin-bottom: 1%;
+}
+
+ol{
+    list-style-type: -moz-ethiopic-numeric;
+    display: inline-block;
+    text-align: left;
+}
+
+.container {
+    text-align: center;
+}
+.center{
+    margin-left: auto;
+    margin-right: auto;
+}
